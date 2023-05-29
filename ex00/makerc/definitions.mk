@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:=ClapTrap.out
+NAME			:=Animal.out
 
 #	Compiler
-CC							:=c++
+CC				:=c++
 
 #	Remove command
-RM							:=rm -rf
+RM				:=rm -rf
 
 #	Compiler flags
 CFLAGS			=-Wall -Wextra -Werror -Wpedantic -std=c++98
@@ -28,7 +28,7 @@ BUILD_DIR		:=build
 
 # Preprocessing files
 SRCS			:=$(wildcard $(SRC_DIR)/*.cpp)
-HEADERS			:=$(INCLUDE_DIR)/ClapTrap.hpp
+HEADERS			:=$(wildcard $(INCLUDE_DIR)/*.hpp)
 
 # 	Objects
 OBJS			:=$(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
