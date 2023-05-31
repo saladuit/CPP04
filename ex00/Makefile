@@ -49,7 +49,7 @@ fsan:
 	@$(MAKE) DEBUG=1 FSAN=1
 .PHONY: fsan
 
-run:
+run: all
 	./$(NAME)
 .PHONY: run
 
