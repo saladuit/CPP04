@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                    .--.  _                 */
-/*   ClapTrap.hpp                                    |o_o || |                */
+/*   Animal.hpp                                      |o_o || |                */
 /*                                                   |:_/ || |_ _   ___  __   */
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
-/*   Created: 2023/05/24 14:47:32 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2023/05/24 14:47:32 by safoh        \___)=(___/                 */
+/*   Created: 2023/05/31 08:57:00 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
+/*   Updated: 2023/05/31 08:57:00 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAP_TRAP_HPP
-#define CLAP_TRAP_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
+#include <Color.hpp>
 #include <iostream>
+#include <ostream>
+#include <string>
 
-class ClapTrap
+class Animal
 {
   public:
-	ClapTrap();
-	ClapTrap(const std::string name);
-	ClapTrap(const ClapTrap &rhs);
-	ClapTrap &operator=(const ClapTrap &rhs);
-	~ClapTrap();
+	Animal();
+	Animal(const Animal &rhs);
+	Animal &operator=(const Animal &rhs);
+	virtual ~Animal();
+	virtual void makeSound() const;
+	virtual void setType(const std::string &type);
+	virtual const std::string &getType() const;
 
-	void attack(const std::string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
-
-  private:
-	std::string _name;
-	unsigned int _hit_points;
-	unsigned int _energy_points;
-	const int _attack_damage;
-	void log_construction(std::string message) const;
-	void log_no_energy(std::string action) const;
-	void log_is_dead(std::string action) const;
-	bool canPerformAction(const std::string &action) const;
-	void logMessage(const std::string &color, const std::string &message) const;
+  protected:
+	std::string _type;
 };
 
+std::ostream &operator<<(std::ostream &out, const Animal &animal);
 #endif
+
+/* ************************************************************************** */

@@ -10,46 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ClapTrap.hpp>
-#include <Color.hpp>
-
-void test_default_constructor(void)
-{
-	ClapTrap clap_trap;
-
-	clap_trap.attack("Martijn");
-	clap_trap.attack("Victor");
-	clap_trap.attack("lucien");
-	clap_trap.takeDamage(5);
-	clap_trap.beRepaired(1);
-	clap_trap.beRepaired(10);
-	clap_trap.attack("Victor");
-	clap_trap.attack("Victor");
-	clap_trap.attack("Victor");
-	clap_trap.attack("Victor");
-	clap_trap.attack("Victor");
-	clap_trap.beRepaired(2); // Can be switched out for attack
-	clap_trap.takeDamage(5);
-	clap_trap.takeDamage(10);
-	// show that it is dead
-	clap_trap.takeDamage(10);
-	clap_trap.attack("Show that it is dead");
-	clap_trap.beRepaired(10);
-}
-
-void test_constructors(void)
-{
-	ClapTrap saladin("Saladin");
-	ClapTrap saladin_copy(saladin);
-	ClapTrap default_claptrap;
-	default_claptrap = saladin;
-}
+#include <Animal.hpp>
+#include <Cat.hpp>
+#include <Dog.hpp>
 
 int main(void)
 {
-	std::cout << std::endl << BCYN "TEST default behaviour:" << std::endl;
-	test_default_constructor();
-	std::cout << std::endl << BCYN "TEST other constructors:" << std::endl;
-	test_constructors();
+	std::cout << "\n---Creating objects with default constructor---\n";
+	Dog dog1;
+	Cat cat1;
+
+	std::cout << "\n---Creating objects with copy constructor---\n";
+	Dog dog2(dog1);
+	Cat cat2(cat1);
+
+	std::cout << "\n---Creating objects with assignment operator---\n";
+	Dog dog3;
+	dog3 = dog1;
+	Cat cat3;
+	cat3 = cat1;
+
+	std::cout << "\n---Creating pointers to Animal objects---\n";
+	const Animal *animal = new Animal();
+	const Animal *dogAnimal = new Dog();
+	const Animal *catAnimal = new Cat();
+
+	std::cout << "\n---Making sounds---\n";
+	dog1.makeSound();
+	cat1.makeSound();
+	catAnimal->makeSound();
+	dogAnimal->makeSound();
+	animal->makeSound();
+
+	std::cout << "\n---Deleting objects from the heap---\n";
+	delete animal;
+	delete dogAnimal;
+	delete catAnimal;
+
+	std::cout << "\n---Deleting objects from the stack---\n";
 	return (0);
 }
+
+/* ************************************************************************** */

@@ -1,62 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                    .--.  _                 */
-/*   ClapTrap.cpp                                    |o_o || |                */
+/*   Animal.cpp                                      |o_o || |                */
 /*                                                   |:_/ || |_ _   ___  __   */
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
-/*   Created: 2023/05/24 14:47:37 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2023/05/24 14:47:37 by safoh        \___)=(___/                 */
+/*   Created: 2023/05/31 09:14:17 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
+/*   Updated: 2023/05/31 09:14:17 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ClapTrap.hpp>
-#include <Color.hpp>
+#include <Animal.hpp>
 
 /* **************************Public_member_functions************************* */
 
-/* **************************Loggers***************************************** */
-
-void ClapTrap::logMessage(const std::string &color,
-						  const std::string &message) const
+void Animal::setType(const std::string &type)
 {
-	std::cout << color << message << NC << std::endl;
+	_type = type;
+}
+
+const std::string &Animal::getType() const
+{
+	return (_type);
+}
+
+void Animal::makeSound() const
+{
 }
 
 /* **************************Orthodox_Canonical_Form************************* */
 
-ClapTrap::ClapTrap()
-	: _name("CL4P-TP"), _hit_points(10), _energy_points(10), _attack_damage(0)
+Animal::Animal() : _type("Animal")
 {
-	log_construction("ClapTrap called default constructor");
+	std::cout << GRN << *this << " called default constructor" << NC
+			  << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string name)
-	: _name(name), _hit_points(10), _energy_points(10), _attack_damage(0)
+Animal::Animal(const Animal &rhs) : _type(rhs._type)
 {
-	log_construction("ClapTrap called Copy constructor");
+	std::cout << GRN << *this << " called Copy constructor" << NC << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &rhs)
-	: _name(rhs._name), _hit_points(rhs._hit_points),
-	  _energy_points(rhs._energy_points), _attack_damage(rhs._attack_damage)
-{
-	log_construction("ClapTrap called Copy constructor");
-}
-
-ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
+Animal &Animal::operator=(const Animal &rhs)
 {
 	if (this != &rhs)
 	{
-		_name = rhs._name;
-		_hit_points = rhs._hit_points;
-		_energy_points = rhs._energy_points;
-		log_construction("Copy assignment operator called");
+		_type = rhs._type;
+		std::cout << GRN << *this << " called assignment operator" << NC
+				  << std::endl;
 	}
 	return (*this);
 }
 
-ClapTrap::~ClapTrap()
+Animal::~Animal()
 {
-	logMessage(BRED, "Destructor called by " + _name);
+	std::cout << BRED << "Destructor called by " << *this << " at " << this
+			  << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &out, const Animal &animal)
+{
+	out << animal.getType();
+	return (out);
+}
+
+/* ************************************************************************** */
