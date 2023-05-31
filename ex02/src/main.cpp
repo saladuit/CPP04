@@ -54,12 +54,19 @@ void testAnimalArray(void)
 	}
 }
 
+// Uncomment line to see that it is abstract
+void testAbstract(void)
+{
+	// Animal test;
+}
+
 int main(void)
 {
 	std::cout << "\n---Testing ideas---\n";
 	testIdeas();
 	std::cout << "\n---Testing animal array---\n";
 	testAnimalArray();
+	testAbstract();
 	return (system("leaks -q Animal.out"));
 }
 
