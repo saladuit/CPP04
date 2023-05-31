@@ -61,7 +61,7 @@ int main(void)
 	delete wrongCatAnimal;
 
 	std::cout << "\n---Deleting objects from the stack---\n";
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 /* ************************************************************************** */

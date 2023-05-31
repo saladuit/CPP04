@@ -60,7 +60,7 @@ int main(void)
 	testIdeas();
 	std::cout << "\n---Testing animal array---\n";
 	testAnimalArray();
-	return (system("leaks -q Animal.out"));
+	return (EXIT_SUCCESS);
 }
 
 /* ************************************************************************** */
