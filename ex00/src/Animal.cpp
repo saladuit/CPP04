@@ -54,8 +54,8 @@ Animal &Animal::operator=(const Animal &rhs)
 
 Animal::~Animal()
 {
-	std::cout << BRED << "Destructor called by " << *this << " at " << this
-			  << std::endl;
+	std::cout << BRED << "Animal destructor called by " << *this << " at "
+			  << this << NC << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Animal &animal)

@@ -17,33 +17,37 @@
 Dog::Dog()
 {
 	this->_type = "Dog";
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << MAG << *this << " default constructor called" << NC
+			  << std::endl;
 }
 
 Dog::Dog(const Dog &rhs)
 {
 	*this = rhs;
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << MAG << *this << " copy constructor called" << NC << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &rhs)
 {
-	std::cout << "Dog assignation operator called" << std::endl;
 	if (this != &rhs)
-		this->_type = rhs._type;
+		Animal::operator=(rhs);
 	return (*this);
+	std::cout << MAG << *this << " assignation operator called" << NC
+			  << std::endl;
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << BRED << "Dog destructor called by " << *this << " at " << this
+			  << NC << std::endl;
 }
 
 /* **************************Public_member_functions************************* */
 
 void Dog::makeSound() const
 {
-	std::cout << "The " << *this << " says: Woof Woof!" << std::endl;
+	std::cout << CYN << "The " << *this << " says: Woof Woof!" << NC
+			  << std::endl;
 }
 
 /* ************************************************************************** */

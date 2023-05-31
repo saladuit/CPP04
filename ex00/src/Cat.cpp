@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Color.hpp"
 #include <Cat.hpp>
 
 /* **************************Orthodox_Canonical_Form************************* */
@@ -17,26 +18,28 @@
 Cat::Cat()
 {
 	this->_type = "Cat";
-	std::cout << *this << " default constructor called" << std::endl;
+	std::cout << YEL << *this << " default constructor called" << NC
+			  << std::endl;
 }
 
 Cat::Cat(const Cat &rhs)
 {
 	*this = rhs;
-	std::cout << *this << " copy constructor called" << std::endl;
+	std::cout << YEL << *this << " copy constructor called" << NC << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &rhs)
 {
 	if (this != &rhs)
-		this->_type = rhs._type;
-	std::cout << *this << " assignation operator called" << std::endl;
+		Animal::operator=(rhs);
+	std::cout << YEL << *this << " assignation operator called" << NC
+			  << std::endl;
 	return (*this);
 }
 
 Cat::~Cat()
 {
-	std::cout << BRED << "Destructor called by " << *this << " at " << this
+	std::cout << BRED << "Cat destructor called by " << *this << " at " << this
 			  << NC << std::endl;
 }
 
@@ -44,7 +47,7 @@ Cat::~Cat()
 
 void Cat::makeSound() const
 {
-	std::cout << "The " << *this << " says: Meow!" << std::endl;
+	std::cout << CYN << "The " << *this << " says: Meow!" << NC << std::endl;
 }
 
 /* ************************************************************************** */
